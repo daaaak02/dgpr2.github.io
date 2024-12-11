@@ -1,0 +1,80 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>카카오맵 경로 시각화</title>
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_JAVASCRIPT_KEY&libraries=services"></script>
+    </head>
+    <body>
+        <div id="map" style="width:100%;height:600px;"></div>
+        <script>
+            var mapContainer = document.getElementById('map');
+            var mapOption = {
+                center: new kakao.maps.LatLng(36.6319, 127.4545),
+                level: 5
+            };
+            var map = new kakao.maps.Map(mapContainer, mapOption);
+
+            // 출발지 마커
+            var markerStart = new kakao.maps.Marker({
+                position: new kakao.maps.LatLng(36.6319, 127.4545)
+            });
+            markerStart.setMap(map);
+
+            // 도착지 마커
+            var markerEnd = new kakao.maps.Marker({
+                position: new kakao.maps.LatLng(36.6285, 127.4567)
+            });
+            markerEnd.setMap(map);
+
+            // 경로 표시
+            var linePath = [];
+    
+            linePath.push(new kakao.maps.Polyline({
+                path: [
+                    new kakao.maps.LatLng(36.63199924181726, 127.45459273261027), new kakao.maps.LatLng(36.631954489861876, 127.45466013824736), new kakao.maps.LatLng(36.6318920724214, 127.45480594018507), new kakao.maps.LatLng(36.63182100101344, 127.45503007468265)
+                ],
+                strokeWeight: 5,
+                strokeColor: "blue",
+                strokeOpacity: 0.7,
+                strokeStyle: "solid"
+            }));
+        
+            linePath.push(new kakao.maps.Polyline({
+                path: [
+                    new kakao.maps.LatLng(36.63182100101344, 127.45503007468265), new kakao.maps.LatLng(36.631225198598194, 127.45481063767748), new kakao.maps.LatLng(36.63089964765904, 127.45456693650388), new kakao.maps.LatLng(36.62980640202929, 127.45395966330958)
+                ],
+                strokeWeight: 5,
+                strokeColor: "blue",
+                strokeOpacity: 0.7,
+                strokeStyle: "solid"
+            }));
+        
+            linePath.push(new kakao.maps.Polyline({
+                path: [
+                    new kakao.maps.LatLng(36.62980640202929, 127.45395966330958), new kakao.maps.LatLng(36.62948392321943, 127.4543868297258), new kakao.maps.LatLng(36.62898202499731, 127.45499415680855), new kakao.maps.LatLng(36.628758007896096, 127.45527526536527), new kakao.maps.LatLng(36.62834581463957, 127.45579250085872)
+                ],
+                strokeWeight: 5,
+                strokeColor: "blue",
+                strokeOpacity: 0.7,
+                strokeStyle: "solid"
+            }));
+        
+            linePath.push(new kakao.maps.Polyline({
+                path: [
+                    new kakao.maps.LatLng(36.62834581463957, 127.45579250085872), new kakao.maps.LatLng(36.62831918769407, 127.45588213756005), new kakao.maps.LatLng(36.62808738106985, 127.45643164355697)
+                ],
+                strokeWeight: 5,
+                strokeColor: "blue",
+                strokeOpacity: 0.7,
+                strokeStyle: "solid"
+            }));
+        
+            linePath.forEach(function(polyline) {
+                polyline.setMap(map);
+            });
+        </script>
+    </body>
+    </html>
+    
